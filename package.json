@@ -9,13 +9,18 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@next/font": "^14.0.4",
     "@react-three/drei": "^9.80.9",
     "@react-three/fiber": "^8.13.7",
+    "@studio-freight/hamo": "^0.6.24",
     "@studio-freight/lenis": "^1.0.19",
+    "@studio-freight/react-lenis": "^0.0.38",
+    "@studio-freight/tempus": "^0.0.38",
     "eslint": "8.48.0",
     "eslint-config-next": "13.4.19",
     "framer-motion": "^10.16.2",
     "framer-motion-3d": "^10.16.2",
+    "gsap": "^3.12.4",
     "next": "13.4.19",
     "react": "18.2.0",
     "react-dom": "18.2.0",

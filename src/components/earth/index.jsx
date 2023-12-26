@@ -1,22 +1,24 @@
 'use client';
 import { Canvas, useLoader } from '@react-three/fiber'
 import { useRef } from 'react';
-import { useScroll } from 'framer-motion';
+import { useScroll, useSpring, useTransform } from 'framer-motion';
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
 import { motion } from 'framer-motion-3d';
 
 export default function earth() {
 
     const scene = useRef(null);
-    const { scrollYProgress } = useScroll({
+    const { scrollYProgress: rotation } = useScroll({
+        offset: ['0', '100%'] // changed to 100%
+    });
+    
+    const { scrollYProgress: planetTransform } = useScroll({
         target: scene,
-        offset: ['start end', 'end start']
-    })
+        offset: ['0', '100%']
+    });
 
-    /* Used for smooth rotation if you're not using Lenis Scroll */
-    // const smoothRotation = useSpring(scrollYProgress, {
-    // damping: 20
-    // });
+    const smoothRotation = useSpring(rotation, { stiffness: 2500, damping: 110 });
+    const scale = useTransform(planetTransform, [0, 1], [2, 3]);
 
     const [color, normal, aoMap] = useLoader(TextureLoader, [
         '/assets/color.jpg',
@@ -26,9 +28,13 @@ export default function earth() {
 
     return (
         <Canvas ref={scene}>
-            <ambientLight intensity={0.1} />
+            <ambientLight intensity={0.2} />
             <directionalLight intensity={3.5} position={[1, 0, -.25]} />
-            <motion.mesh scale={2.5} rotation-y={scrollYProgress}>
+            <motion.mesh
+                scale={scale}
+                rotateY={smoothRotation}
+                rotateX={smoothRotation}
+            >
                 <sphereGeometry args={[1, 64, 64]}/>
                 <meshStandardMaterial map={color} normalMap={normal} aoMap={aoMap}/>
             </motion.mesh>

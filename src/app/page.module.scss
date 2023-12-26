@@ -1,8 +1,8 @@
+@import "../app/styles/variables.scss";
+
 .main{
-    height: 60vw;
-    background-color: #0f0f0f;
-    margin-top: 100vh;
-    margin-bottom: 100vh;
+    height: 700vh;
+    background-color: $main-black;
     position: relative;
     display: flex;
     align-items: center;
@@ -11,4 +11,17 @@
     img{
         height: 100%;
     }
+}
+
+.hero {
+    height: 130svh;
+    width: 98vw;
+    position: absolute;
+    top: 0;
+}
+
+.earth {
+    position: fixed;
+    inset: 0;
+    height: 100vh;
 }

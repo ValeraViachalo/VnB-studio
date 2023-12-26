@@ -1,0 +1,14 @@
+.header {
+  position: absolute;
+  z-index: 1000;
+  margin: 1vw;
+  margin: 1vw 2vw 0;
+  padding: 1vw;
+  left: 0;
+  right: 0;
+  background-color: $secondary-black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 0.7vw;
+}
